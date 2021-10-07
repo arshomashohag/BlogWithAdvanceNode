@@ -27,6 +27,8 @@ test("Hit the login with google, check if it navigates to auth flow", async ()=>
     await page.waitFor('.right a');
     await page.click(".right a");
 
+    await page.waitForNavigation();
+    
     const pageUrl = await page.url();
 
     expect(pageUrl).toMatch(/accounts\.google\.com/);
