@@ -24,6 +24,7 @@ test("Test header, check brand text", async ()=>{
 
 test("Hit the login with google, check if it navigates to auth flow", async ()=>{
 
+    await page.waitFor('.right a');
     await page.click(".right a");
 
     const pageUrl = await page.url();
@@ -35,7 +36,6 @@ test("Hit the login with google, check if it navigates to auth flow", async ()=>
 test("Sign in to the app, check logout button", async ()=>{
 
     await page.login();
-    await page.waitFor('.right li:nth-child(2) a');
     const logoutText = await page.getContentsOf('.right li:nth-child(2) a');
 
     expect(logoutText).toEqual("Logout");
