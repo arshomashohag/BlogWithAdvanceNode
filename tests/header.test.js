@@ -24,11 +24,9 @@ test("Test header, check brand text", async ()=>{
 
 test("Hit the login with google, check if it navigates to auth flow", async ()=>{
 
-    await page.waitFor('.right a');
-    await page.click(".right a");
+    await page.waitFor('a[href="/auth/google"]');
+    await page.click('a[href="/auth/google"]');
 
-    await page.waitForNavigation();
-    
     const pageUrl = await page.url();
 
     expect(pageUrl).toMatch(/accounts\.google\.com/);
